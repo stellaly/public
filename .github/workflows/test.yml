@@ -9,12 +9,13 @@ jobs:
         # Steps represent a sequence of tasks that will be executed as part of the job
         steps:
             # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-            - uses: actions/checkout@v3
-              with:
-                repository: 'FooIbar/EhViewer'
+            # - uses: actions/checkout@v3
+            #   with:
+            #     repository: 'FooIbar/EhViewer'
             # Runs a single command using the runners shell
             - name: Set up Git
               run: |
+                git clone https://github.com/Ehviewer-Overhauled/Ehviewer
                 git config --global user.name 'Chenzhujia'
                 git config --global user.email 'njuee.chen@gmail.com'
             - name: Set up SSH key
