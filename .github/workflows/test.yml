@@ -1,0 +1,31 @@
+name: GitHub Actions Test
+
+on: push
+
+jobs:
+
+    build:
+    # The type of runner that the job will run on
+        runs-on: ubuntu-latest​
+        # Steps represent a sequence of tasks that will be executed as part of the job
+        steps:
+            # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+            - name: Fetch ehviewer
+            - uses: actions/checkout@v3​
+              with:
+                repository: 'FooIbar/EhViewer'
+            # Runs a single command using the runners shell
+            - name: Push changes
+              uses: ad-m/github-push-action@master
+              with:
+                repository: 'stellaly/private'
+                github_token: ${{ secrets.TOKEN }}
+- uses: actions/checkout@v3
+
+  with:
+    # # Default: ${{ github.token }} ,传参给它更高权限的 token
+    # token: ${{ secrets.PERSONAL_TOKEN }}
+    # # 把子模块打开
+    # submodules: 'true'
+    repository: 'FooIbar/EhViewer'
+
