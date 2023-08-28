@@ -13,8 +13,24 @@ jobs:
               with:
                 repository: 'FooIbar/EhViewer'
             # Runs a single command using the runners shell
-            - name: Push changes
-              uses: ad-m/github-push-action@master
-              with:
-                repository: 'stellaly/private'
-                github_token: ${{ secrets.TOKEN }}
+            - name: Set up Git
+              run: |
+                git config --global user.name 'Chenzhujia'
+                git config --global user.email 'njuee.chen@gmail.com'
+            - name: Set up SSH key
+              run: |
+                mkdir -p ~/.ssh
+                echo "${{secrets.SSh}}" > ~/.ssh/id_rsa
+                chmod 600 ~/.ssh/id_rsa
+                ssh-keyscan github.com >> ~/.ssh/known_hosts
+            - name: Push to Private Repo
+              run: |
+                git clone https://github.com/stellaly/private.git private
+                cp -r EhViewer/* stellaly/
+                cd stellaly
+                git add .
+                git commit -m "Update from public repo"
+                git push origin master  # 或者你想要的默认分支
+
+            - name: Clean up
+              run: rm -rf stellaly/
