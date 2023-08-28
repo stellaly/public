@@ -15,7 +15,7 @@ jobs:
             # Runs a single command using the runners shell
             - name: Set up Git
               run: |
-                git clone https://github.com/Ehviewer-Overhauled/Ehviewer
+                git clone https://github.com/Ehviewer-Overhauled/Ehviewer EhViewer
                 git config --global user.name 'Chenzhujia'
                 git config --global user.email 'njuee.chen@gmail.com'
             - name: Set up SSH key
@@ -28,10 +28,9 @@ jobs:
               env:
                 PAT: ${{ secrets.TOKEN }}
               run: |
-                git clone git@github.com:stellaly/private.git /private
-                # cp -r EhViewer/* stellaly/
-                # cd stellaly
-                cp -r ./* /private
+                git clone git@github.com:stellaly/private.git private
+                cp -r EhViewer/* private/
+
                 cd /private
                 
                 git add .
