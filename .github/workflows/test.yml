@@ -34,3 +34,5 @@ jobs:
 
             - name: Clean up
               run: rm -rf stellaly/
+        env:
+          PAT: ${{ secrets.TOKEN }}
