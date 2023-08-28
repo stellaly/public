@@ -30,6 +30,8 @@ jobs:
                 git clone git@github.com:stellaly/private.git private
                 # cp -r EhViewer/* stellaly/
                 # cd stellaly
+                cd private
+                cp -r ../* ./
                 git add .
                 git commit -m "Update from public repo"
                 git push origin master  # 或者你想要的默认分支
