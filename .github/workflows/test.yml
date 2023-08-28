@@ -24,8 +24,10 @@ jobs:
                 chmod 600 ~/.ssh/id_rsa
                 ssh-keyscan github.com >> ~/.ssh/known_hosts
             - name: Push to Private Repo
+              env:
+                PAT: ${{ secrets.TOKEN }}
               run: |
-                git clone https://github.com/stellaly/private.git private
+                git clone git@github.com:stellaly/private.git private
                 cp -r EhViewer/* stellaly/
                 cd stellaly
                 git add .
@@ -34,5 +36,3 @@ jobs:
 
             - name: Clean up
               run: rm -rf stellaly/
-        env:
-          PAT: ${{ secrets.TOKEN }}
