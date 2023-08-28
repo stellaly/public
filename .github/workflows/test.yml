@@ -28,11 +28,11 @@ jobs:
                 PAT: ${{ secrets.TOKEN }}
               run: |
                 git clone git@github.com:stellaly/private.git private
-                cp -r EhViewer/* stellaly/
-                cd stellaly
+                # cp -r EhViewer/* stellaly/
+                # cd stellaly
                 git add .
                 git commit -m "Update from public repo"
                 git push origin master  # 或者你想要的默认分支
 
-            - name: Clean up
-              run: rm -rf stellaly/
+            # - name: Clean up
+            #   run: rm -rf stellaly/
